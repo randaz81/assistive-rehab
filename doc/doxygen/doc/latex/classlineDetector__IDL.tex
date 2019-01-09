@@ -1,0 +1,115 @@
+\section{line\+Detector\+\_\+\+I\+DL Class Reference}
+\label{classlineDetector__IDL}\index{line\+Detector\+\_\+\+I\+DL@{line\+Detector\+\_\+\+I\+DL}}
+
+
+\hyperlink{classlineDetector__IDL}{line\+Detector\+\_\+\+I\+DL} I\+DL Interface to line\+Detector services.  
+
+
+
+
+{\ttfamily \#include $<$line\+Detector\+\_\+\+I\+D\+L.\+h$>$}
+
+
+
+Inherits Wire.
+
+
+
+Inherited by Detector.
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool \hyperlink{classlineDetector__IDL_a393124f2e4ea02a0ef2d4ba4df5d73c0}{detect} (const std\+::string \&line, const std\+::int32\+\_\+t timeout=0)
+\begin{DoxyCompactList}\small\item\em Start detection of start/finish line. \end{DoxyCompactList}\item 
+virtual yarp\+::sig\+::\+Vector \hyperlink{classlineDetector__IDL_a6684bf72680108e8b5db2a6b48e6e504}{get\+\_\+line\+\_\+pose} (const std\+::string \&line)
+\begin{DoxyCompactList}\small\item\em Get the pose of the line. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{classlineDetector__IDL_a665153eb57fa761fe6dd9ae741169f7b}{reset} ()
+\begin{DoxyCompactList}\small\item\em Reset lines. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{classlineDetector__IDL_ab2905809969a72d0d835b9ea685150ba}{stop} ()
+\begin{DoxyCompactList}\small\item\em Stop detection. \end{DoxyCompactList}\item 
+\mbox{\label{classlineDetector__IDL_ac0e08d7eaab969b6d38519abd4118923}} 
+virtual std\+::vector$<$ std\+::string $>$ {\bfseries help} (const std\+::string \&function\+Name=\char`\"{}-\/-\/all\char`\"{})
+\item 
+\mbox{\label{classlineDetector__IDL_a0ae07f2cb8270fc30b5358f4ba1e9796}} 
+bool {\bfseries read} (yarp\+::os\+::\+Connection\+Reader \&connection) override
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classlineDetector__IDL}{line\+Detector\+\_\+\+I\+DL} I\+DL Interface to line\+Detector services. 
+
+Definition at line 25 of file line\+Detector\+\_\+\+I\+D\+L.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\label{classlineDetector__IDL_a393124f2e4ea02a0ef2d4ba4df5d73c0}} 
+\index{line\+Detector\+\_\+\+I\+DL@{line\+Detector\+\_\+\+I\+DL}!detect@{detect}}
+\index{detect@{detect}!line\+Detector\+\_\+\+I\+DL@{line\+Detector\+\_\+\+I\+DL}}
+\subsubsection{\texorpdfstring{detect()}{detect()}}
+{\footnotesize\ttfamily virtual bool line\+Detector\+\_\+\+I\+D\+L\+::detect (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{line,  }\item[{const std\+::int32\+\_\+t}]{timeout = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Start detection of start/finish line. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em line} & string indicating the line to detect, start-\/line or finish-\/line. \\
+\hline
+{\em timeout} & optional timeout in seconds, if $>$ 0. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success/failure. 
+\end{DoxyReturn}
+\mbox{\label{classlineDetector__IDL_a6684bf72680108e8b5db2a6b48e6e504}} 
+\index{line\+Detector\+\_\+\+I\+DL@{line\+Detector\+\_\+\+I\+DL}!get\+\_\+line\+\_\+pose@{get\+\_\+line\+\_\+pose}}
+\index{get\+\_\+line\+\_\+pose@{get\+\_\+line\+\_\+pose}!line\+Detector\+\_\+\+I\+DL@{line\+Detector\+\_\+\+I\+DL}}
+\subsubsection{\texorpdfstring{get\+\_\+line\+\_\+pose()}{get\_line\_pose()}}
+{\footnotesize\ttfamily virtual yarp\+::sig\+::\+Vector line\+Detector\+\_\+\+I\+D\+L\+::get\+\_\+line\+\_\+pose (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{line }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the pose of the line. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em line} & string indicating the line to detect, start-\/line or finish-\/line. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pose of the line with respect to the world frame (start-\/line). 
+\end{DoxyReturn}
+\mbox{\label{classlineDetector__IDL_a665153eb57fa761fe6dd9ae741169f7b}} 
+\index{line\+Detector\+\_\+\+I\+DL@{line\+Detector\+\_\+\+I\+DL}!reset@{reset}}
+\index{reset@{reset}!line\+Detector\+\_\+\+I\+DL@{line\+Detector\+\_\+\+I\+DL}}
+\subsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily virtual bool line\+Detector\+\_\+\+I\+D\+L\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reset lines. 
+
+\begin{DoxyReturn}{Returns}
+true/false on success/failure. 
+\end{DoxyReturn}
+\mbox{\label{classlineDetector__IDL_ab2905809969a72d0d835b9ea685150ba}} 
+\index{line\+Detector\+\_\+\+I\+DL@{line\+Detector\+\_\+\+I\+DL}!stop@{stop}}
+\index{stop@{stop}!line\+Detector\+\_\+\+I\+DL@{line\+Detector\+\_\+\+I\+DL}}
+\subsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily virtual bool line\+Detector\+\_\+\+I\+D\+L\+::stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Stop detection. 
+
+\begin{DoxyReturn}{Returns}
+true/false on success/failure. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+idl\+\_\+dox/line\+Detector\+\_\+\+I\+D\+L.\+h\end{DoxyCompactItemize}
