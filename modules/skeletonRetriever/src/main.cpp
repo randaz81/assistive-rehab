@@ -556,6 +556,7 @@ class Retriever : public RFModule
     /****************************************************************/
     bool tfUpdate(const shared_ptr<MetaSkeleton> &s, string skeleton_frame_name, const Stamp &stamp)
     {
+		yDebug() << "tfUpdate" << skeleton_frame_name;
         if (iTf)
         {
             auto keypoints = s->skeleton->get_unordered();
@@ -566,7 +567,9 @@ class Retriever : public RFModule
                 m[0][3] = it->second[0];
                 m[1][3] = it->second[1];
                 m[2][3] = it->second[2];
-                iTf->setTransform(rootFrameName, skeleton_frame_name + "/"+ it->first, m);
+                //yDebug() << m.toString();
+            //    iTf->setTransform(rootFrameName, skeleton_frame_name + "/"+ it->first, m);
+                iTf->setTransform(skeleton_frame_name + "/"+ it->first, rootFrameName, m);
             }
             return true;
         }
@@ -918,6 +921,7 @@ class Retriever : public RFModule
             {
                 // acquire skeletons with sufficient number of key-points
                 vector<shared_ptr<MetaSkeleton>> new_accepted_skeletons;
+
                 for (size_t i=0; i<b2->size(); i++)
                 {
                     Bottle *b3=b2->get(i).asList();
@@ -944,18 +948,20 @@ class Retriever : public RFModule
                     int counter = 0;
                     for (auto &n:new_accepted_skeletons)
                     {
-                        string skeleton_frame_prefix = "/human" + std::to_string(counter);
+                        string skeleton_frame_prefix = "/human" + std::to_string(counter++);
                         vector<double> scores=computeScores(pending,n);
                         auto it=min_element(scores.begin(),scores.end());
+                        
+                        yDebug() << "scores size: " << scores.size();
+
                         if (it!=scores.end())
                         {
-                            if (*it<numeric_limits<double>::infinity())
+                            if (*it < numeric_limits<double>::infinity())
                             {
                                 auto i=distance(scores.begin(),it);
                                 auto &s=pending[i];
                                 update(n,s,viewer_remove_tags);
                                 opcSet(s,stamp);
-                                tfUpdate(s, skeleton_frame_prefix, stamp);
                                 pending.erase(pending.begin()+i);
                                 continue;
                             }
@@ -963,9 +969,9 @@ class Retriever : public RFModule
 
                         if (opcAdd(n,stamp))
                         {
-                            tfUpdate(n, skeleton_frame_prefix, stamp);
                             skeletons.push_back(n);
                         }
+                        tfUpdate(n, skeleton_frame_prefix, stamp);
                     }
 
                     enforce_tag_uniqueness_pending(pending);
